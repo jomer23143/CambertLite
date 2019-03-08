@@ -22,7 +22,7 @@ namespace Cambert.outgoing
 
         private void Sales_Load(object sender, EventArgs e)
         {
-            button1.Visible = false;
+           
             {
                 var dt = DataSupport.RunDataSet("SELECT custCode FROM base_customer").Tables[0];
                 foreach (DataRow row in dt.Rows)
@@ -31,18 +31,17 @@ namespace Cambert.outgoing
         }
         private void product()
         {
-            var dt = Framework.DataSupport.RunDataSet("SELECT product_code, [description] FROM base_product").Tables[0];
+            //var dt = Framework.DataSupport.RunDataSet("SELECT product_code,(product_code +'-----'+[description])as Code FROM base_product").Tables[0];
             //DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn col = Framework.UIControlSupport.AddGridColumnComboEditable("product_code,[description]" setGridComboBox(dt, "product_code,[description]", "product_code", System.Windows.Forms.AutoCompleteSource.ListItems, System.Windows.Forms.AutoCompleteMode.SuggestAppend, System.Windows.Forms.ComboBoxStyle.DropDown);
             //DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn col = Framework.UIControlSupport.AddGridColumnComboEditable("product code,description", dt, "product_code,[description]", "product_code", 2, System.Windows.Forms.ComboBoxStyle.DropDown, 30, 500);
             //dataGridView1.Columns.Add(col);
-            colCode = UIControlSupport.setGridComboBox(dt, "product_code", "product_code",AutoCompleteSource.ListItems,AutoCompleteMode.SuggestAppend,ComboBoxStyle.DropDown);
-            //colCode = UIControlSupport.AddGridColumnComboEditable("Product Code,Description", dt, "product_code", "[description]", 2, ComboBoxStyle.DropDown, 30, 500);
-            //var dt = DataSupport.RunDataSet("SELECT product_code FROM base_product").Tables[0];
-            //dataGridView1.DataSource = dt;
+            var dt = DataSupport.RunDataSet("SELECT product_code , description , customer_code,category  FROM base_product").Tables[0];
+           
             //colCode = UIControlSupport.setGridComboBox(dt, "product_code", "product_code", AutoCompleteSource.ListItems, AutoCompleteMode.SuggestAppend, ComboBoxStyle.DropDown);
-            //colCode.DataSource = dt;
-            //colCode.DisplayMember = "product_code";
-            //colCode.ValueMember = "product_code";
+            colCode.DataSource = dt;
+            colCode.DisplayMember = "product_code,decription,customer_code,category";
+            colCode.ValueMember = "product_code";        
+            
         }
         private void custCode()
         {
@@ -323,13 +322,18 @@ namespace Cambert.outgoing
 
         private void cbxProductCode_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cbxProductCode.Text == "Product Code")
+            
+        }
+
+        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+          
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridView1.Columns[colCode.Name].Index)
             {
-                product();
-            }
-            else
-            {
-                custCode();
             }
         }
     }
