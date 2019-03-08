@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using Framework;
 using CrystalDecisions.CrystalReports.Engine;
+using System.Reflection;
+
 
 namespace Cambert.MasterFile
 {
@@ -22,45 +24,57 @@ namespace Cambert.MasterFile
         private void ProductList_Load(object sender, EventArgs e)
         {
             display();
+            DoubleBuffered(dataGridView1, true);
+        }
+        public void DoubleBuffered(object obj, bool setting)
+        {
+            Type objType = obj.GetType();
+            PropertyInfo pi = objType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(obj, setting, null);
         }
         private void display()
         {
-            _bs.DataSource = DataSupport.RunDataSet("  Select * from base_product").Tables[0];
+            _bs.DataSource = DataSupport.RunDataSet("  Select * from base_product order by customer_code asc").Tables[0];
             dataGridView1.DataSource = _bs;
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var dialog = new MasterFile.Products();
-            string code = dataGridView1.Rows[e.RowIndex].Cells[colCode.Name].Value.ToString();
-            var dRow = DataSupport.RunDataSet("Select * from base_product  join base_price on base_price.product_code = base_product.product_code  where base_price.product_code ='" + code + "'").Tables[0];
-            if (dRow.Rows.Count > 0)
+            try
             {
-                foreach (DataRow row in dRow.Rows)
+                var dialog = new MasterFile.Products();
+                String index = dataGridView1.Rows[e.RowIndex].Cells[colindex.Name].Value.ToString(); 
+                var dRow = DataSupport.RunDataSet(String.Format("Select * from base_price  where base_price.prodIndex = '{0}' ",index)).Tables[0];
+                if (dRow.Rows.Count > 0)
                 {
-
-                    dialog.txtproductCode.Text = row["product_code"].ToString();
-                    dialog.txtCustCode.Text = row["customer_code"].ToString();
-                    dialog.txtDescription.Text = row["description"].ToString();
-                    dialog.dataGridView1.DataSource = DataSupport.RunDataSet("Select [uom],quantity,priceType,price from  base_price where product_code ='" + code + "'").Tables[0];
+                    foreach (DataRow row in dRow.Rows)
+                    {
+                        dialog.txtproductCode.Text = row["product_code"].ToString();
+                        dialog.txtCustCode.Text = row["customer_code"].ToString();
+                        dialog.txtDescription.Text = row["description"].ToString();
+                        Products.id = Convert.ToInt32(row["prodIndex"].ToString());
+                        dialog.dataGridView1.DataSource = DataSupport.RunDataSet("Select [uom],quantity,priceType,price from  base_price join base_product on base_price.prodIndex = base_product._prodIndex where base_price.prodIndex ='" + index + "'").Tables[0];
+                    }
                 }
-            }
-            else
-            {
-                var dt = DataSupport.RunDataSet("Select * from base_product  where product_code ='" + code + "'").Tables[0];
-                foreach (DataRow row in dt.Rows)
+                else
                 {
-                    dialog.txtproductCode.Text = row["product_code"].ToString();
-                    dialog.txtCustCode.Text = row["customer_code"].ToString();
-                    dialog.txtDescription.Text = row["description"].ToString();
+                    var dt = DataSupport.RunDataSet("Select * from base_product  where _prodIndex ='" + index + "'").Tables[0];
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dialog.txtproductCode.Text = row["product_code"].ToString();
+                        dialog.txtCustCode.Text = row["customer_code"].ToString();
+                        dialog.txtDescription.Text = row["description"].ToString();
+                        Products.id = Convert.ToInt32(row["_prodIndex"].ToString());
+                    }
                 }
-            }
 
-            Products.mode = "update";
-            dialog.txtproductCode.ReadOnly = true;
-            dialog.txtCustCode.ReadOnly = true;
-            dialog.ShowDialog();
-            display();
+                Products.mode = "update";
+                dialog.ShowDialog();
+                display();
+            }
+            catch (Exception ex)
+
+            { MessageBox.Show(ex.Message); }
         }
 
         private void txtSearch_KeyUp(object sender, KeyEventArgs e)

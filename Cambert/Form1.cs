@@ -33,8 +33,6 @@ namespace Cambert
         private void salesInvoiceToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var dialog = new outgoing.Sales();
-            dialog.label6.Visible = false;
-            dialog.cbxProductCode.Visible = false;
             //dialog.Show();
             Openform(dialog);
         }

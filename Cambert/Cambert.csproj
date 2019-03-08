@@ -317,6 +317,7 @@
     </Compile>
     <Compile Include="SecuritySupport.cs" />
     <Compile Include="TaskSupport.cs" />
+    <Compile Include="UIControlSupport.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>

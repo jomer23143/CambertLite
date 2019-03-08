@@ -152,7 +152,16 @@ namespace Framework
             {
                 char[] delims = { '.' };
                 String cleaned = (columns[i].Contains('.') ? (columns[i].Split(delims))[1] : columns[i]);
-                result += String.Format(" {0} = '{1}' " + ((i == columns.Count - 1) ? "" : ","), cleaned, updateList[columns[i]].Replace("'","''"));
+                if (primary_values.Keys.Contains(cleaned))
+                    continue;
+                String value = updateList[columns[i]].Replace("'", "''");
+                String delimiter = "'";
+                if (value == "")
+                {
+                    value = "NULL";
+                    delimiter = "";
+                }
+                result += String.Format(" {0} = '{1}' " + ((i == columns.Count - 1) ? "" : ","), cleaned, value);
             }
             result += GenerateFilter(primary_values);
             result = compare_sql + result;

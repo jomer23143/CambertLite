@@ -219,8 +219,8 @@ namespace Framework
         {
             String result = "";
 
-            DataSet ds = DataSupport.RunDataSet(String.Format("SELECT menu_current FROM TMENU WHERE menu_id = '{0}' ", menu) + UpdateMenuCode(menu));
-            //DataSet ds = DataSupport.RunDataSet(String.Format("SELECT menu_current FROM TMENU WHERE menu_id = '{0}' ", menu));
+            DataSet ds = DataSupport.RunDataSet(String.Format("SELECT menu_current FROM TMENU WHERE menu_id = '{0}' ", menu));
+            //DataSet ds = DataSupport.RunDataSet(String.Format("SELECT menu_current FROM TMENU WHERE menu_id = '{0}' ", menu)+ UpdateMenuCode(menu));
             String next_value = ds.Tables[0].Rows[0][0].ToString();
             result = menu+"-"+  next_value;
             return result;
@@ -229,6 +229,7 @@ namespace Framework
         {
             String result = "";
             result = String.Format(" UPDATE TMENU SET menu_current = menu_current + 1 WHERE menu_id = '{0}';", menu);
+            DataSet ds = DataSupport.RunDataSet(result);
             return result;
         }
         #endregion

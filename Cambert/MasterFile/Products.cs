@@ -13,6 +13,7 @@ namespace Cambert.MasterFile
     public partial class Products : Form
     {
         public static String mode = "";
+        public static int id;
         public Products()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace Cambert.MasterFile
             if (mode == "update")
             { update(); }
             else
-            { saved(); }
+            { saved(); clear(); }
         }
         private void saved()
         {
@@ -37,6 +38,7 @@ namespace Cambert.MasterFile
             header.Add("product_code", txtproductCode.Text);
             header.Add("customer_code", txtCustCode.Text);
             header.Add("description", txtDescription.Text);
+            header.Add("category", txtcategory.Text);
             sql.Append(DataSupport.GetInsert("base_product", header));
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -67,7 +69,7 @@ namespace Cambert.MasterFile
             }
             DataSupport.RunNonQuery(sql.ToString(), IsolationLevel.ReadCommitted);
             MessageBox.Show("Success");
-            DialogResult = DialogResult.OK;
+            
 
         }
         private void update()
@@ -75,9 +77,11 @@ namespace Cambert.MasterFile
             StringBuilder sql = new StringBuilder();
             var primary = new List<string>();
             Dictionary<String, Object> header = new Dictionary<String, Object>();
+            header.Add("_prodIndex", id);
             header.Add("product_code", txtproductCode.Text);
             header.Add("description", txtDescription.Text);
-            primary.Add("product_code");
+            header.Add("customer_code", txtCustCode.Text);
+            primary.Add("_prodIndex");
             sql.Append(DataSupport.GetUpdate("base_product", header, primary));
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -86,7 +90,10 @@ namespace Cambert.MasterFile
                     break;
                 var primarys = new List<string>();
                 Dictionary<String, Object> details = new Dictionary<String, Object>();
+                details.Add("prodIndex", id);
                 details.Add("product_code", txtproductCode.Text);
+                details.Add("description", txtDescription.Text);
+                details.Add("customer_code", txtCustCode.Text);
                 if (string.IsNullOrEmpty(row.Cells[colUOM.Name].Value as string))
                 { details.Add("uom", ""); }
                 else
@@ -103,15 +110,39 @@ namespace Cambert.MasterFile
                 { details.Add("price", ""); }
                 else
                 { details.Add("price", row.Cells[colPrice.Name].Value.ToString()); }
-                primarys.Add("product_code"); primarys.Add("uom"); primarys.Add("priceType");
-                if (FAQ.productPriceExist(txtproductCode.Text, row.Cells[colUOM.Name].Value.ToString(), row.Cells[colPriceType.Name].Value.ToString()))
+                primarys.Add("prodIndex"); primarys.Add("product_code"); primarys.Add("description"); primarys.Add("customer_code"); primarys.Add("uom"); primarys.Add("priceType");
+                if (FAQ.productPriceExist(id.ToString(),txtproductCode.Text,txtDescription.Text,txtCustCode.Text, row.Cells[colUOM.Name].Value.ToString(), row.Cells[colPriceType.Name].Value.ToString()))
                 { sql.Append(DataSupport.GetUpdate("base_price", details, primarys)); }
                 else
                 { sql.Append(DataSupport.GetInsert("base_price", details)); }
             }
+
             DataSupport.RunNonQuery(sql.ToString(), IsolationLevel.ReadCommitted);
             MessageBox.Show("updated");
+        }
+
+        private void Products_FormClosing(object sender, FormClosingEventArgs e)
+        {
             DialogResult = DialogResult.OK;
+        }
+        private void clear()
+        {
+            txtproductCode.Clear();
+            //txtCustCode.Clear();
+            txtcategory.Clear();
+            txtDescription.Clear();
+            dataGridView1.Refresh();
+        }
+
+        private void Products_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Enter)
+            {
+                if (mode == "update")
+                { update(); }
+                else
+                { saved(); clear(); }
+            }
         }
     }
 }

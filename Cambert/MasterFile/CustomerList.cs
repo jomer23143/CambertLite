@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Framework;
 using CrystalDecisions.CrystalReports.Engine;
+using System.Reflection;
 
 namespace Cambert.MasterFile
 {
@@ -23,6 +24,13 @@ namespace Cambert.MasterFile
         private void CustomerList_Load(object sender, EventArgs e)
         {
             display();
+            DoubleBuffered(dataGridView1, true);
+        }
+        public void DoubleBuffered(object obj, bool setting)
+        {
+            Type objType = obj.GetType();
+            PropertyInfo pi = objType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(obj, setting, null);
         }
         private void display()
         {
@@ -47,6 +55,7 @@ namespace Cambert.MasterFile
             var dt = DataSupport.RunDataSet("Select * from base_customer where custCode = '" + code + "'").Tables[0];
             foreach (DataRow row in dt.Rows)
             {
+                addcustomer.id = Convert.ToInt32(row["_custIndex"].ToString());
                 dialog.txtcustCode.Text = row["custCode"].ToString();
                 dialog.txtcustName.Text = row["customer"].ToString();
                 dialog.txtaddress.Text = row["address"].ToString();
@@ -62,7 +71,6 @@ namespace Cambert.MasterFile
                 dialog.txtdisc5.Text = row["discount5"].ToString();
                 dialog.txtzone.Text = row["zone"].ToString();
             }
-            dialog.txtcustCode.ReadOnly = true;
             addcustomer.mode = "update";
             dialog.ShowDialog();
             display();

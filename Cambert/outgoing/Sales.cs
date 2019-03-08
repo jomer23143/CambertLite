@@ -17,14 +17,12 @@ namespace Cambert.outgoing
         public Sales()
         {
             InitializeComponent();
+            product();
         }
 
         private void Sales_Load(object sender, EventArgs e)
         {
             button1.Visible = false;
-            {
-                product(); 
-            }
             {
                 var dt = DataSupport.RunDataSet("SELECT custCode FROM base_customer").Tables[0];
                 foreach (DataRow row in dt.Rows)
@@ -33,10 +31,26 @@ namespace Cambert.outgoing
         }
         private void product()
         {
-            var dt = DataSupport.RunDataSet("SELECT product_code FROM base_product").Tables[0];
+            var dt = Framework.DataSupport.RunDataSet("SELECT product_code, [description] FROM base_product").Tables[0];
+            //DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn col = Framework.UIControlSupport.AddGridColumnComboEditable("product_code,[description]" setGridComboBox(dt, "product_code,[description]", "product_code", System.Windows.Forms.AutoCompleteSource.ListItems, System.Windows.Forms.AutoCompleteMode.SuggestAppend, System.Windows.Forms.ComboBoxStyle.DropDown);
+            //DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn col = Framework.UIControlSupport.AddGridColumnComboEditable("product code,description", dt, "product_code,[description]", "product_code", 2, System.Windows.Forms.ComboBoxStyle.DropDown, 30, 500);
+            //dataGridView1.Columns.Add(col);
+            colCode = UIControlSupport.setGridComboBox(dt, "product_code", "product_code",AutoCompleteSource.ListItems,AutoCompleteMode.SuggestAppend,ComboBoxStyle.DropDown);
+            //colCode = UIControlSupport.AddGridColumnComboEditable("Product Code,Description", dt, "product_code", "[description]", 2, ComboBoxStyle.DropDown, 30, 500);
+            //var dt = DataSupport.RunDataSet("SELECT product_code FROM base_product").Tables[0];
+            //dataGridView1.DataSource = dt;
+            //colCode = UIControlSupport.setGridComboBox(dt, "product_code", "product_code", AutoCompleteSource.ListItems, AutoCompleteMode.SuggestAppend, ComboBoxStyle.DropDown);
+            //colCode.DataSource = dt;
+            //colCode.DisplayMember = "product_code";
+            //colCode.ValueMember = "product_code";
+        }
+        private void custCode()
+        {
+           
+            var dt = DataSupport.RunDataSet("SELECT customer_code FROM base_product").Tables[0];
             colCode.DataSource = dt;
-            colCode.DisplayMember = "product_code";
-            colCode.ValueMember = "product_code";
+            colCode.DisplayMember = "customer_code";
+            colCode.ValueMember = "customer_code";
         }
         private void btnDeclare_Click(object sender, EventArgs e)
         {
@@ -101,6 +115,7 @@ namespace Cambert.outgoing
             if (viewer._status == "save")
             {
                 saved();
+                DataSupport.UpdateMenuCode("INVOICE");
                 clear();
             }
         }
@@ -159,6 +174,7 @@ namespace Cambert.outgoing
                 var dt = DataSupport.RunDataSet("select * from base_product where product_code = '" + code + "'").Tables[0];
                 if (e.ColumnIndex == dataGridView1.Columns[colCode.Name].Index)
                 {
+                   
                     foreach (DataRow row in dt.Rows)
                     {
                         dataGridView1.Rows[e.RowIndex].Cells[colDescription.Name].Value = row["description"].ToString();
@@ -303,6 +319,18 @@ namespace Cambert.outgoing
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cbxProductCode_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cbxProductCode.Text == "Product Code")
+            {
+                product();
+            }
+            else
+            {
+                custCode();
+            }
         }
     }
 }

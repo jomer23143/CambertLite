@@ -265,9 +265,9 @@ public class FAQ
         else
         { return DataSupport.RunDataSet(" Select ISNULL(max(transID),0) + 1 from StocktransferRequest").Tables[0].Rows[0][0].ToString(); }
     }
-    public static Boolean productPriceExist(String productCode, String uom,String type)
+    public static Boolean productPriceExist(String index, String productCode, String description ,String custcode, String uom,String type)
     {
-        var dt = DataSupport.RunDataSet("select * from base_price  where product_code = '" + productCode + "' and uom = '" + uom + "' and priceType = '" + type + "'").Tables[0];
+        var dt = DataSupport.RunDataSet("select * from base_price  where prodIndex ='"+index+"' and  product_code = '" + productCode + "' and customer_code = '" + custcode + "' and description = '" + description + "'and uom = '" + uom + "' and priceType = '" + type + "'").Tables[0];
         if (dt.Rows.Count > 0)
             return true;
         return false;

@@ -23,9 +23,10 @@ namespace Cambert.outgoing
         {
             button1.Visible = false;
             {
-                var dt = DataSupport.RunDataSet("SELECT product_code FROM base_product").Tables[0];
-                foreach (DataRow row in dt.Rows)
-                    colCode.Items.Add(row[0].ToString());
+                var dt = DataSupport.RunDataSet("SELECT * FROM base_product").Tables[0];
+                colCode.DataSource = dt;
+                colCode.DisplayMember = "_prodIndex";
+                colCode.ValueMember = "product_code";
             }
             {
                 var dt = DataSupport.RunDataSet("SELECT custCode FROM base_customer").Tables[0];
@@ -57,14 +58,15 @@ namespace Cambert.outgoing
         {
             try
             {
+                String id;
                 String code = dataGridView1.Rows[e.RowIndex].Cells[colCode.Name].Value.ToString();
                 var dt = DataSupport.RunDataSet("select * from base_product where product_code = '" + code + "'").Tables[0];
                
                 foreach (DataRow row in dt.Rows)
                 {
                     dataGridView1.Rows[e.RowIndex].Cells[coldescription.Name].Value = row["description"].ToString();
+                    dataGridView1.Rows[e.RowIndex].Cells[colprodIndex.Name].Value = row["_prodIndex"].ToString();
                 }
-             
             }
             catch
             { }
@@ -143,7 +145,7 @@ namespace Cambert.outgoing
             viewer.btnPrint.Visible = false;
             viewer.ShowDialog(); 
             if (viewer._status == "save")
-            { save(); clear(); }
+            { save(); DataSupport.UpdateMenuCode("DR"); clear(); }
         }
         private void save()
         {

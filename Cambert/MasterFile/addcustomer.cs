@@ -12,6 +12,7 @@ namespace Cambert.MasterFile
 {
     public partial class addcustomer : Form
     {
+        public static int id;
         public static String mode = "";
         public addcustomer()
         {
@@ -59,6 +60,7 @@ namespace Cambert.MasterFile
             StringBuilder sql = new StringBuilder();
             var primary = new List<String>();
             Dictionary<String, Object> header = new Dictionary<string, object>();
+            header.Add("_custIndex", id);
             header.Add("custCode", txtcustCode.Text);
             header.Add("customer", txtcustName.Text);
             header.Add("address", txtaddress.Text);
@@ -74,7 +76,7 @@ namespace Cambert.MasterFile
             header.Add("discount5", txtdisc5.Text);
             header.Add("zone", txtzone.Text);
             header.Add("status", 1);
-            primary.Add("custCode");
+            primary.Add("_custIndex");
             sql.Append(DataSupport.GetUpdate("base_customer", header, primary));
             DataSupport.RunNonQuery(sql.ToString(), IsolationLevel.ReadCommitted);
             MessageBox.Show("updated");
