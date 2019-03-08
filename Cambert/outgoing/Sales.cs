@@ -8,15 +8,26 @@ using System.Text;
 using System.Windows.Forms;
 using Framework;
 using CrystalDecisions.CrystalReports.Engine;
+using DevComponents.DotNetBar.Controls;
+using DevComponents.DotNetBar.SuperGrid.Style;
+using DevComponents.DotNetBar.SuperGrid;
+using System.Collections;
 
 namespace Cambert.outgoing
 {
     public partial class Sales : Form
     {
         String Business;
+        ComboBoxEx cmb = new ComboBoxEx();
+        bool FormLoad;
         public Sales()
         {
             InitializeComponent();
+            string[] orderArray = { "Asterids", "Eudicots", "Rosids" };
+            grid.PrimaryGrid.Columns.Add(new GridColumn("colprodcode"));
+            var dt = DataSupport.RunDataSet("SELECT _prodindex,product_code,customer_code FROM base_product").Tables[0];
+            grid.PrimaryGrid.Columns["colprodcode"].EditorType = typeof(FragrantComboBox);
+            grid.PrimaryGrid.Columns["colprodcode"].EditorParams = new object[] { dt, "product_code,customer_code", "_prodindex","product_code",AutoCompleteMode.SuggestAppend,AutoCompleteSource.ListItems };            
         }
 
         private void Sales_Load(object sender, EventArgs e)
@@ -30,13 +41,14 @@ namespace Cambert.outgoing
                 foreach (DataRow row in dt.Rows)
                     cbxCustCode.Items.Add(row[0].ToString());
             }
+            FormLoad = true;
         }
         private void product()
         {
-            var dt = DataSupport.RunDataSet("SELECT product_code FROM base_product").Tables[0];
-            colCode.DataSource = dt;
-            colCode.DisplayMember = "product_code";
-            colCode.ValueMember = "product_code";
+            //var dt = DataSupport.RunDataSet("SELECT _prodindex,product_code,customer_code FROM base_product").Tables[0];
+            //cmb = UIControlSupport.SetComboBoxEx(cmb, dt, "product_code,customer_code", "product_code", "_prodindex", AutoCompleteSource.ListItems, 
+            //                                     AutoCompleteMode.SuggestAppend,ComboBoxStyle.DropDown,
+            //                                     dataGridView1.Columns["colcode"].Width + 200, 250);
         }
         private void btnDeclare_Click(object sender, EventArgs e)
         {
@@ -304,5 +316,41 @@ namespace Cambert.outgoing
         {
             this.Close();
         }
+
+        private void cmb_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (FormLoad)
+            {             
+                dataGridView1.CurrentCell.Value = cmb.Text;
+                MessageBox.Show(cmb.Text);
+                cmb.Visible = false;
+            }
+        }
+
+        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridView1.Columns["colcode"].Index)
+            {
+                Rectangle tempRect = dataGridView1.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
+                cmb.Location = tempRect.Location;
+                cmb.Width = tempRect.Width;
+                cmb.Visible = true;
+
+            }
+        }
     }
+    internal class FragrantComboBox : GridComboBoxExEditControl
+    {
+        public FragrantComboBox(DataTable orderArray, String _DropDownColumns, String _ValueMember, String _DisplayMember, 
+                                AutoCompleteMode _AutoCompleteMode, AutoCompleteSource _AutoCompleteSource)
+        {
+            DataSource = orderArray;
+            ValueMember = _ValueMember;
+            DisplayMember = _DisplayMember;
+            AutoCompleteSource = _AutoCompleteSource;
+            AutoCompleteMode = _AutoCompleteMode;
+            DropDownColumns = _DropDownColumns;
+        }
+    }
+
 }

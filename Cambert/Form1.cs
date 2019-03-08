@@ -69,7 +69,7 @@ namespace Cambert
             form.MdiParent = this;
             form.Activate();
             form.Show();
-            Refresh();
+            //Refresh();
         }
 
         private void salesReportToolStripMenuItem_Click(object sender, EventArgs e)

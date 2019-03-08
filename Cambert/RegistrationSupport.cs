@@ -12,7 +12,7 @@ namespace Framework
 
     public static class RegistrationSupport
     {
-        public static string userType;
+        public static string userType = "admin";
 
         public static Boolean IsCorrectUsernameAndPassword(String username, String password)
         {

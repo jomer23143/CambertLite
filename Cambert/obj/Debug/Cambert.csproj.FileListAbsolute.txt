@@ -19,3 +19,24 @@ C:\JaylordBugtai\Cambert\Cambert\obj\Debug\Cambert.outgoing.Dr.resources
 C:\JaylordBugtai\Cambert\Cambert\obj\Debug\Cambert.Reports.Extracopy.EXTRASALES.resources
 C:\JaylordBugtai\Cambert\Cambert\obj\Debug\Cambert.Reports.Extracopy.ExtraDRCopy.resources
 C:\JaylordBugtai\Cambert\Cambert\obj\Debug\Cambert.Reports.Register.RegisterReports.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\bin\Debug\Cambert.exe
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\bin\Debug\Cambert.pdb
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.ConnectionSettings.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.MainMenu.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.Login.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.MasterFile.addcustomer.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.MasterFile.CustomerList.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.MasterFile.ProductList.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.MasterFile.Products.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.MasterFile.Registration.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.outgoing.Dr.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.outgoing.Sales.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.Properties.Resources.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.Reports.Extracopy.ExtraDRCopy.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.Reports.Extracopy.EXTRASALES.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.Reports.Register.RegisterReports.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.Reports.ReportViewer.resources
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.csproj.GenerateResource.Cache
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.exe
+C:\Users\Eddie Cabellon\Desktop\clone\CambertLite\Cambert\obj\Debug\Cambert.pdb
