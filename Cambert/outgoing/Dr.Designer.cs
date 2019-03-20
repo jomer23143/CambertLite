@@ -46,6 +46,7 @@
             this.txtDRNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.txtTerms = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtaddress = new System.Windows.Forms.TextBox();
@@ -57,18 +58,18 @@
             this.txtTin = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnDeclare = new System.Windows.Forms.Button();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.colCode = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
             this.colprodIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.coldescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colbatch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colExdate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.colPack = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colpcs = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
             this.colcases = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
+            this.btnDeclare = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -179,6 +180,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.txtTerms);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.txtaddress);
@@ -198,6 +200,21 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Customer Details";
             // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(118)))), ((int)(((byte)(163)))));
+            this.button2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(11, 70);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(107, 37);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Add Orders";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // txtTerms
             // 
             this.txtTerms.AutoCompleteCustomSource.AddRange(new string[] {
@@ -214,7 +231,7 @@
             "60 days",
             "CWO",
             "COD"});
-            this.txtTerms.Location = new System.Drawing.Point(161, 82);
+            this.txtTerms.Location = new System.Drawing.Point(313, 83);
             this.txtTerms.Name = "txtTerms";
             this.txtTerms.Size = new System.Drawing.Size(135, 21);
             this.txtTerms.TabIndex = 1;
@@ -223,7 +240,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(159, 62);
+            this.label11.Location = new System.Drawing.Point(311, 63);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(43, 15);
             this.label11.TabIndex = 1;
@@ -296,7 +313,7 @@
             // 
             this.txtTin.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTin.Location = new System.Drawing.Point(10, 82);
+            this.txtTin.Location = new System.Drawing.Point(162, 83);
             this.txtTin.Name = "txtTin";
             this.txtTin.ReadOnly = true;
             this.txtTin.Size = new System.Drawing.Size(136, 20);
@@ -306,7 +323,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(8, 63);
+            this.label8.Location = new System.Drawing.Point(160, 64);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(48, 15);
             this.label8.TabIndex = 8;
@@ -325,8 +342,8 @@
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colCode,
             this.colprodIndex,
+            this.colCode,
             this.coldescription,
             this.colbatch,
             this.colExdate,
@@ -337,74 +354,22 @@
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView1.Size = new System.Drawing.Size(895, 182);
+            this.dataGridView1.Size = new System.Drawing.Size(895, 236);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            // 
-            // btnDeclare
-            // 
-            this.btnDeclare.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDeclare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(118)))), ((int)(((byte)(163)))));
-            this.btnDeclare.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeclare.ForeColor = System.Drawing.Color.White;
-            this.btnDeclare.Location = new System.Drawing.Point(775, 377);
-            this.btnDeclare.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDeclare.Name = "btnDeclare";
-            this.btnDeclare.Size = new System.Drawing.Size(115, 40);
-            this.btnDeclare.TabIndex = 3;
-            this.btnDeclare.Text = "Save";
-            this.btnDeclare.UseVisualStyleBackColor = false;
-            this.btnDeclare.Click += new System.EventHandler(this.btnDeclare_Click);
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(545, 380);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnExit.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(656, 378);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(115, 40);
-            this.btnExit.TabIndex = 62;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // colCode
-            // 
-            this.colCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.colCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.colCode.DisplayMember = "Text";
-            this.colCode.DropDownHeight = 106;
-            this.colCode.DropDownWidth = 121;
-            this.colCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.colCode.HeaderText = "Product Code";
-            this.colCode.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.colCode.IntegralHeight = false;
-            this.colCode.ItemHeight = 15;
-            this.colCode.Name = "colCode";
-            this.colCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
             // colprodIndex
             // 
             this.colprodIndex.HeaderText = "Column1";
             this.colprodIndex.Name = "colprodIndex";
             this.colprodIndex.Visible = false;
+            // 
+            // colCode
+            // 
+            this.colCode.HeaderText = "Product Code";
+            this.colCode.Name = "colCode";
+            this.colCode.ReadOnly = true;
+            this.colCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // coldescription
             // 
@@ -495,11 +460,55 @@
             this.colcases.Name = "colcases";
             this.colcases.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // btnDeclare
+            // 
+            this.btnDeclare.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDeclare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(118)))), ((int)(((byte)(163)))));
+            this.btnDeclare.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeclare.ForeColor = System.Drawing.Color.White;
+            this.btnDeclare.Location = new System.Drawing.Point(775, 432);
+            this.btnDeclare.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeclare.Name = "btnDeclare";
+            this.btnDeclare.Size = new System.Drawing.Size(115, 40);
+            this.btnDeclare.TabIndex = 3;
+            this.btnDeclare.Text = "Save";
+            this.btnDeclare.UseVisualStyleBackColor = false;
+            this.btnDeclare.Click += new System.EventHandler(this.btnDeclare_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(551, 442);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnExit.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(656, 433);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(115, 40);
+            this.btnExit.TabIndex = 62;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // Dr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 424);
+            this.ClientSize = new System.Drawing.Size(900, 479);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDeclare);
@@ -548,8 +557,9 @@
         private System.Windows.Forms.ComboBox txtTerms;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnExit;
-        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn colCode;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn colprodIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn coldescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn colbatch;
         private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn colExdate;

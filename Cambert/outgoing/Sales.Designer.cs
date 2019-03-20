@@ -45,12 +45,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.txtTerms = new System.Windows.Forms.ComboBox();
             this.cbxPriceType = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.cbxProductCode = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtCustName = new System.Windows.Forms.TextBox();
@@ -59,14 +58,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtTin = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.cbxProductCode = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.colCode = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQty = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
-            this.colUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colPrice = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
-            this.colDisc = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
-            this.colAmount = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
             this.panel17 = new System.Windows.Forms.Panel();
             this.txtTotalA = new System.Windows.Forms.Label();
             this.txtVat = new System.Windows.Forms.Label();
@@ -77,6 +71,18 @@
             this.btnDeclare = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.columnHeader1 = new DevComponents.AdvTree.ColumnHeader();
+            this.columnHeader2 = new DevComponents.AdvTree.ColumnHeader();
+            this.columnHeader3 = new DevComponents.AdvTree.ColumnHeader();
+            this.columnHeader4 = new DevComponents.AdvTree.ColumnHeader();
+            this.colprodIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQty = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
+            this.colUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colPrice = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
+            this.colDisc = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
+            this.colAmount = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -195,12 +201,11 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.txtTerms);
             this.groupBox2.Controls.Add(this.cbxPriceType);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.cbxProductCode);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.txtAddress);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.txtCustName);
@@ -217,6 +222,21 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Customer Details";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(118)))), ((int)(((byte)(163)))));
+            this.button2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(8, 107);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(107, 37);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "Add Orders";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // txtTerms
             // 
@@ -249,7 +269,7 @@
             this.cbxPriceType.Items.AddRange(new object[] {
             "LP WITH VAT",
             "LP WITHOUT VAT"});
-            this.cbxPriceType.Location = new System.Drawing.Point(9, 123);
+            this.cbxPriceType.Location = new System.Drawing.Point(309, 82);
             this.cbxPriceType.Name = "cbxPriceType";
             this.cbxPriceType.Size = new System.Drawing.Size(137, 21);
             this.cbxPriceType.TabIndex = 2;
@@ -260,24 +280,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(7, 104);
+            this.label7.Location = new System.Drawing.Point(307, 63);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 15);
             this.label7.TabIndex = 2;
             this.label7.Text = "Price Type :";
-            // 
-            // cbxProductCode
-            // 
-            this.cbxProductCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxProductCode.FormattingEnabled = true;
-            this.cbxProductCode.Items.AddRange(new object[] {
-            "Product Code",
-            "Customer Code"});
-            this.cbxProductCode.Location = new System.Drawing.Point(309, 81);
-            this.cbxProductCode.Name = "cbxProductCode";
-            this.cbxProductCode.Size = new System.Drawing.Size(135, 21);
-            this.cbxProductCode.TabIndex = 1;
-            this.cbxProductCode.SelectedValueChanged += new System.EventHandler(this.cbxProductCode_SelectedValueChanged);
             // 
             // label11
             // 
@@ -288,16 +295,6 @@
             this.label11.Size = new System.Drawing.Size(43, 15);
             this.label11.TabIndex = 12;
             this.label11.Text = "Terms :";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(310, 62);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 15);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Use Product Code :";
             // 
             // txtAddress
             // 
@@ -382,6 +379,29 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "Tin No :";
             // 
+            // cbxProductCode
+            // 
+            this.cbxProductCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxProductCode.FormattingEnabled = true;
+            this.cbxProductCode.Items.AddRange(new object[] {
+            "Product Code",
+            "Customer Code"});
+            this.cbxProductCode.Location = new System.Drawing.Point(943, 194);
+            this.cbxProductCode.Name = "cbxProductCode";
+            this.cbxProductCode.Size = new System.Drawing.Size(135, 21);
+            this.cbxProductCode.TabIndex = 1;
+            this.cbxProductCode.SelectedValueChanged += new System.EventHandler(this.cbxProductCode_SelectedValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(941, 173);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 15);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Use Product Code :";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.LightGray;
@@ -395,6 +415,7 @@
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colprodIndex,
             this.colCode,
             this.colDescription,
             this.colQty,
@@ -411,108 +432,6 @@
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // colCode
-            // 
-            this.colCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.colCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.colCode.DisplayMember = "Text";
-            this.colCode.DropDownHeight = 106;
-            this.colCode.DropDownWidth = 121;
-            this.colCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.colCode.HeaderText = "Product Code";
-            this.colCode.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.colCode.IntegralHeight = false;
-            this.colCode.ItemHeight = 15;
-            this.colCode.Name = "colCode";
-            this.colCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.colCode.Width = 150;
-            // 
-            // colDescription
-            // 
-            this.colDescription.HeaderText = "Description";
-            this.colDescription.Name = "colDescription";
-            this.colDescription.ReadOnly = true;
-            this.colDescription.Width = 300;
-            // 
-            // colQty
-            // 
-            // 
-            // 
-            // 
-            this.colQty.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.colQty.BackgroundStyle.Class = "DataGridViewNumericBorder";
-            this.colQty.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.colQty.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colQty.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colQty.HeaderText = "Qty";
-            this.colQty.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.colQty.Name = "colQty";
-            this.colQty.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colQty.Width = 50;
-            // 
-            // colUnit
-            // 
-            this.colUnit.HeaderText = "Unit";
-            this.colUnit.Items.AddRange(new object[] {
-            "PCS",
-            "CASES"});
-            this.colUnit.Name = "colUnit";
-            this.colUnit.Width = 70;
-            // 
-            // colPrice
-            // 
-            // 
-            // 
-            // 
-            this.colPrice.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.colPrice.BackgroundStyle.Class = "DataGridViewNumericBorder";
-            this.colPrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.colPrice.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.colPrice.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colPrice.HeaderText = "Price";
-            this.colPrice.Increment = 1;
-            this.colPrice.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            this.colPrice.Name = "colPrice";
-            this.colPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // colDisc
-            // 
-            // 
-            // 
-            // 
-            this.colDisc.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.colDisc.BackgroundStyle.Class = "DataGridViewNumericBorder";
-            this.colDisc.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.colDisc.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.colDisc.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colDisc.HeaderText = "Disc";
-            this.colDisc.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.colDisc.Name = "colDisc";
-            this.colDisc.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colDisc.Width = 50;
-            // 
-            // colAmount
-            // 
-            // 
-            // 
-            // 
-            this.colAmount.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.colAmount.BackgroundStyle.Class = "DataGridViewNumericBorder";
-            this.colAmount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.colAmount.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
-            this.colAmount.HeaderText = "Amount";
-            this.colAmount.Increment = 1;
-            this.colAmount.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            this.colAmount.Name = "colAmount";
-            this.colAmount.ReadOnly = true;
-            this.colAmount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // panel17
             // 
@@ -630,16 +549,145 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Name = "columnHeader1";
+            this.columnHeader1.Text = "Product Code";
+            this.columnHeader1.Width.Absolute = 150;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Editable = false;
+            this.columnHeader2.MinimumWidth = 300;
+            this.columnHeader2.Name = "columnHeader2";
+            this.columnHeader2.Text = "Description";
+            this.columnHeader2.Width.Absolute = 150;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Name = "columnHeader3";
+            this.columnHeader3.Text = "Customer Code";
+            this.columnHeader3.Width.Absolute = 150;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Name = "columnHeader4";
+            this.columnHeader4.Text = "Category";
+            this.columnHeader4.Width.Absolute = 150;
+            // 
+            // colprodIndex
+            // 
+            this.colprodIndex.HeaderText = "";
+            this.colprodIndex.Name = "colprodIndex";
+            this.colprodIndex.Visible = false;
+            // 
+            // colCode
+            // 
+            this.colCode.HeaderText = "Product Code";
+            this.colCode.Name = "colCode";
+            this.colCode.ReadOnly = true;
+            this.colCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCode.Width = 150;
+            // 
+            // colDescription
+            // 
+            this.colDescription.HeaderText = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.ReadOnly = true;
+            this.colDescription.Width = 300;
+            // 
+            // colQty
+            // 
+            // 
+            // 
+            // 
+            this.colQty.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.colQty.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.colQty.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.colQty.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colQty.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colQty.HeaderText = "Qty";
+            this.colQty.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
+            this.colQty.Name = "colQty";
+            this.colQty.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colQty.Width = 50;
+            // 
+            // colUnit
+            // 
+            this.colUnit.HeaderText = "Unit";
+            this.colUnit.Items.AddRange(new object[] {
+            "PCS",
+            "CASES"});
+            this.colUnit.Name = "colUnit";
+            this.colUnit.Width = 70;
+            // 
+            // colPrice
+            // 
+            // 
+            // 
+            // 
+            this.colPrice.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.colPrice.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.colPrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.colPrice.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.colPrice.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colPrice.HeaderText = "Price";
+            this.colPrice.Increment = 1;
+            this.colPrice.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.colPrice.Name = "colPrice";
+            this.colPrice.ReadOnly = true;
+            this.colPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colDisc
+            // 
+            // 
+            // 
+            // 
+            this.colDisc.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.colDisc.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.colDisc.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.colDisc.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.colDisc.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colDisc.HeaderText = "Disc";
+            this.colDisc.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
+            this.colDisc.Name = "colDisc";
+            this.colDisc.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colDisc.Width = 50;
+            // 
+            // colAmount
+            // 
+            // 
+            // 
+            // 
+            this.colAmount.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.colAmount.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.colAmount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.colAmount.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            this.colAmount.HeaderText = "Amount";
+            this.colAmount.Increment = 1;
+            this.colAmount.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.colAmount.Name = "colAmount";
+            this.colAmount.ReadOnly = true;
+            this.colAmount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // Sales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(919, 574);
+            this.ClientSize = new System.Drawing.Size(920, 574);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.cbxProductCode);
             this.Controls.Add(this.btnDeclare);
             this.Controls.Add(this.panel14);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.panel17);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox2);
@@ -660,6 +708,7 @@
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -689,7 +738,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTin;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnDeclare;
         private System.Windows.Forms.Panel panel14;
         public System.Windows.Forms.TextBox txtAmountD;
@@ -701,7 +749,14 @@
         private System.Windows.Forms.ComboBox txtTerms;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnExit;
-        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn colCode;
+        private DevComponents.AdvTree.ColumnHeader columnHeader1;
+        private DevComponents.AdvTree.ColumnHeader columnHeader2;
+        private DevComponents.AdvTree.ColumnHeader columnHeader3;
+        private DevComponents.AdvTree.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Button button2;
+        public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colprodIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
         private DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn colQty;
         private System.Windows.Forms.DataGridViewComboBoxColumn colUnit;

@@ -25,6 +25,8 @@ namespace Cambert.MasterFile
         {
             display();
             DoubleBuffered(dataGridView1, true);
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+            dataGridView1.EnableHeadersVisualStyles = false;
         }
         public void DoubleBuffered(object obj, bool setting)
         {
@@ -51,7 +53,7 @@ namespace Cambert.MasterFile
                     {
                         dialog.txtproductCode.Text = row["product_code"].ToString();
                         dialog.txtCustCode.Text = row["customer_code"].ToString();
-                        dialog.txtDescription.Text = row["description"].ToString();
+                        dialog.txtDescription.Text = row["description"].ToString().Replace("'","");
                         Products.id = Convert.ToInt32(row["prodIndex"].ToString());
                         dialog.dataGridView1.DataSource = DataSupport.RunDataSet("Select [uom],quantity,priceType,price from  base_price join base_product on base_price.prodIndex = base_product._prodIndex where base_price.prodIndex ='" + index + "'").Tables[0];
                     }
@@ -63,7 +65,7 @@ namespace Cambert.MasterFile
                     {
                         dialog.txtproductCode.Text = row["product_code"].ToString();
                         dialog.txtCustCode.Text = row["customer_code"].ToString();
-                        dialog.txtDescription.Text = row["description"].ToString();
+                        dialog.txtDescription.Text = row["description"].ToString().Replace("'","");
                         Products.id = Convert.ToInt32(row["_prodIndex"].ToString());
                     }
                 }
@@ -113,6 +115,11 @@ namespace Cambert.MasterFile
             viewer.Viewer.ReportSource = ReportDocs;
             viewer.btnDeclare.Visible = false;
             viewer.ShowDialog();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

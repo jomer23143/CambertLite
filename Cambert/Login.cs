@@ -41,7 +41,7 @@ namespace Cambert
                 var dialog = new MainMenu();
                 this.Visible = false;
                 dialog.ShowDialog();
-                this.Close();
+                this.Hide();
             }
             else
             {

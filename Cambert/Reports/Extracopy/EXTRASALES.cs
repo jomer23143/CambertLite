@@ -41,7 +41,7 @@ namespace Cambert.Reports.Extracopy
             result.Columns.Add(new DataColumn("discount", typeof(Decimal)));
             result.Columns.Add(new DataColumn("amountDue", typeof(Decimal)));
             DataRow resultRow = result.NewRow();
-            var dt = DataSupport.RunDataSet("SELECT * FROM Global_ProductTrans  p join Global_ProductTransDetails d on p.outgoing_Id = d.outgoing_Id join base_customer c on p.custCode = c.custCode where p.siNo = '" + txtsI.Text + "'").Tables[0];
+            var dt = DataSupport.RunDataSet("SELECT * FROM Global_ProductTrans  p join Global_ProductTransDetails d on p.outgoing_Id = d.outgoing_Id join base_customer c on p.custCode = c.custCode where p.siNo = '" + txtSI.Text + "'").Tables[0];
             foreach (DataRow row in dt.Rows)
             {
                 resultRow = result.NewRow();
@@ -80,6 +80,15 @@ namespace Cambert.Reports.Extracopy
             viewer.Viewer.ReportSource = ReportDocs;
             viewer.btnDeclare.Visible = false;
             viewer.ShowDialog();
+        }
+
+        private void EXTRASALES_Load(object sender, EventArgs e)
+        {
+            var dt = DataSupport.RunDataSet("Select siNo from Global_ProductTrans order by outgoing_Id DESC").Tables[0];
+            txtSI.DataSource = dt;
+            txtSI.DisplayMember = "siNo";
+            txtSI.ValueMember = "siNo";
+
         }
     }
 }

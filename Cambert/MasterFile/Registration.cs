@@ -29,6 +29,17 @@ namespace Cambert.MasterFile
             sql.Append(DataSupport.GetInsert("[employees]", header));
 
             DataSupport.RunNonQuery(sql.ToString(), IsolationLevel.ReadCommitted);
+            MessageBox.Show("Saved");
+            clear();
+        }
+        private void clear()
+        {
+            txtId.Clear();
+            txtname.Clear();
+            txtposition.Clear();
+            txtpass.Clear();
+            cbxType.SelectedIndex = -1;
+
         }
     }
 }

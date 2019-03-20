@@ -83,19 +83,21 @@ namespace Cambert
         }
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
-        {     
-            
+        {
+            this.Hide();
+            var dailog = new Login();
+            dailog.Show();
         }
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Close();
         }
 
         private void salesRegisterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var dialog = new Reports.Register.RegisterReports();
             dialog.Mode = "GOOD STOCKS";
+            dialog.Text = "Sales Register";
             Openform(dialog);
         }
 
@@ -103,6 +105,7 @@ namespace Cambert
         {
             var dialog = new Reports.Register.RegisterReports();
             dialog.Mode = "DAMAGE STOCKS";
+            dialog.Text = "Delivery Register";
             Openform(dialog);
         }
     }

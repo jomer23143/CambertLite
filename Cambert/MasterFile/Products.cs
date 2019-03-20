@@ -29,7 +29,15 @@ namespace Cambert.MasterFile
             if (mode == "update")
             { update(); }
             else
-            { saved(); clear(); }
+            {
+                if (FAQ.ProductCode(txtproductCode.Text, txtCustCode.Text, txtDescription.Text))
+                { MessageBox.Show("Product is allReady Exist"); }
+                else
+                {
+                    saved(); 
+                    clear();
+                }
+            }
         }
         private void saved()
         {
@@ -40,14 +48,25 @@ namespace Cambert.MasterFile
             header.Add("description", txtDescription.Text);
             header.Add("category", txtcategory.Text);
             sql.Append(DataSupport.GetInsert("base_product", header));
+           
+            DataSupport.RunNonQuery(sql.ToString(), IsolationLevel.ReadCommitted);
+            saveUOM();
 
+        }
+        private void saveUOM()
+        {
+            StringBuilder sql = new StringBuilder();
+            String id = DataSupport.RunDataSet("Select max(_prodIndex) from base_product").Tables[0].Rows[0][0].ToString();
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
 
                 if (dataGridView1.Rows.IndexOf(row) == dataGridView1.Rows.Count - 1)
                     break;
                 Dictionary<String, Object> details = new Dictionary<String, Object>();
+                details.Add("prodIndex", id);
                 details.Add("product_code", txtproductCode.Text);
+                details.Add("customer_code", txtCustCode.Text);
+                details.Add("description", txtDescription.Text);
                 if (string.IsNullOrEmpty(row.Cells[colUOM.Name].Value as string))
                 { details.Add("uom", ""); }
                 else
@@ -70,8 +89,8 @@ namespace Cambert.MasterFile
             DataSupport.RunNonQuery(sql.ToString(), IsolationLevel.ReadCommitted);
             MessageBox.Show("Success");
             
-
         }
+
         private void update()
         {
             StringBuilder sql = new StringBuilder();
@@ -128,10 +147,10 @@ namespace Cambert.MasterFile
         private void clear()
         {
             txtproductCode.Clear();
-            //txtCustCode.Clear();
+            txtCustCode.Clear();
             txtcategory.Clear();
             txtDescription.Clear();
-            dataGridView1.Refresh();
+            dataGridView1.Rows.Clear();
         }
 
         private void Products_KeyDown(object sender, KeyEventArgs e)

@@ -305,9 +305,9 @@ public class FAQ
         return false;
 
     }
-    public static Boolean ProductCode(String ProductCode)
+    public static Boolean ProductCode(String ProductCode,String custCode,String Description)
     {
-        var dt = DataSupport.RunDataSet("SELECT * FROM [oms_db].[dbo].[Products] WHERE [product_id] = '" + ProductCode + "' ").Tables[0];
+        var dt = DataSupport.RunDataSet("SELECT * from base_product WHERE product_code = '" + ProductCode + "' and customer_code ='" + custCode+"' and description ='" + Description+"' ").Tables[0];
         if (dt.Rows.Count > 0)
             return true;
         return false;

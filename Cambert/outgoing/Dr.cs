@@ -13,6 +13,7 @@ namespace Cambert.outgoing
 {
     public partial class Dr : Form
     {
+        
         String Business;
         public Dr()
         {
@@ -23,10 +24,10 @@ namespace Cambert.outgoing
         {
             button1.Visible = false;
             {
-                var dt = DataSupport.RunDataSet("SELECT * FROM base_product").Tables[0];
-                colCode.DataSource = dt;
-                colCode.DisplayMember = "_prodIndex";
-                colCode.ValueMember = "product_code";
+                //var dt = DataSupport.RunDataSet("SELECT * FROM base_product").Tables[0];
+                //colCode.DataSource = dt;
+                //colCode.DisplayMember = "_prodIndex";
+                //colCode.ValueMember = "product_code";
             }
             {
                 var dt = DataSupport.RunDataSet("SELECT custCode FROM base_customer").Tables[0];
@@ -56,20 +57,20 @@ namespace Cambert.outgoing
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                String id;
-                String code = dataGridView1.Rows[e.RowIndex].Cells[colCode.Name].Value.ToString();
-                var dt = DataSupport.RunDataSet("select * from base_product where product_code = '" + code + "'").Tables[0];
+            //try
+            //{
+            //    String id;
+            //    String code = dataGridView1.Rows[e.RowIndex].Cells[colCode.Name].Value.ToString();
+            //    var dt = DataSupport.RunDataSet("select * from base_product where product_code = '" + code + "'").Tables[0];
                
-                foreach (DataRow row in dt.Rows)
-                {
-                    dataGridView1.Rows[e.RowIndex].Cells[coldescription.Name].Value = row["description"].ToString();
-                    dataGridView1.Rows[e.RowIndex].Cells[colprodIndex.Name].Value = row["_prodIndex"].ToString();
-                }
-            }
-            catch
-            { }
+            //    foreach (DataRow row in dt.Rows)
+            //    {
+            //        dataGridView1.Rows[e.RowIndex].Cells[coldescription.Name].Value = row["description"].ToString();
+            //        dataGridView1.Rows[e.RowIndex].Cells[colprodIndex.Name].Value = row["_prodIndex"].ToString();
+            //    }
+            //}
+            //catch
+            //{ }
         }
 
         private void txtCustCode_SelectedValueChanged(object sender, EventArgs e)
@@ -172,6 +173,7 @@ namespace Cambert.outgoing
 
                     Dictionary<String, Object> detail = new Dictionary<String, Object>();
                     detail.Add("dr_Id", DRID);
+                    detail.Add("prodIndex", row.Cells[colprodIndex.Name].Value.ToString());
                     detail.Add("product_code", row.Cells[colCode.Name].Value.ToString());
                     detail.Add("description", row.Cells[coldescription.Name].Value.ToString());
                     if (string.IsNullOrEmpty(row.Cells[colbatch.Name].Value as string))
@@ -231,6 +233,30 @@ namespace Cambert.outgoing
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new outgoing.Products())
+            {
+                dialog.ShowDialog();
+                foreach (DataGridViewRow row in dialog.dataGridView1.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells["colcheck"].Value))
+                    {
+                        var dt = DataSupport.RunDataSet("Select * from base_product where _prodIndex = '" + row.Cells["colprodIndex"].Value.ToString() + "'").Tables[0];
+                      
+                        foreach (DataRow data in dt.Rows)
+                        {
+                            //Object[] items = new Object[] { row.Cells["colprodIndex"].Value.ToString(), row.Cells["colproduct"].Value.ToString(), row.Cells["colDescription"].Value.ToString() };
+                            Object[] items = new Object[] { data["_prodIndex"].ToString(), data["product_code"].ToString(), data["description"].ToString() };
+                            dataGridView1.Rows.Add(items);
+                            DialogResult = DialogResult.OK;
+                        }
+                    }
+
+                }
+            }
         }
     }
 }

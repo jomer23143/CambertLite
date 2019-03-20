@@ -85,7 +85,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtcustCode);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(19, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(760, 327);
@@ -111,7 +111,7 @@
             // txtdisc5
             // 
             this.txtdisc5.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtdisc5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdisc5.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdisc5.Location = new System.Drawing.Point(406, 233);
             this.txtdisc5.Name = "txtdisc5";
             this.txtdisc5.Size = new System.Drawing.Size(56, 20);
@@ -122,7 +122,7 @@
             // txtdisc4
             // 
             this.txtdisc4.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtdisc4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdisc4.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdisc4.Location = new System.Drawing.Point(329, 233);
             this.txtdisc4.Name = "txtdisc4";
             this.txtdisc4.Size = new System.Drawing.Size(56, 20);
@@ -144,7 +144,7 @@
             // txtdisc2
             // 
             this.txtdisc2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtdisc2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdisc2.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdisc2.Location = new System.Drawing.Point(174, 233);
             this.txtdisc2.Name = "txtdisc2";
             this.txtdisc2.Size = new System.Drawing.Size(56, 20);
@@ -155,7 +155,7 @@
             // txtdisc1
             // 
             this.txtdisc1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtdisc1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdisc1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdisc1.Location = new System.Drawing.Point(98, 233);
             this.txtdisc1.Name = "txtdisc1";
             this.txtdisc1.Size = new System.Drawing.Size(56, 20);
@@ -176,7 +176,7 @@
             // txtzone
             // 
             this.txtzone.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtzone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtzone.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtzone.Location = new System.Drawing.Point(486, 194);
             this.txtzone.Name = "txtzone";
             this.txtzone.Size = new System.Drawing.Size(125, 20);
@@ -195,7 +195,7 @@
             // txtterms
             // 
             this.txtterms.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtterms.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtterms.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtterms.Location = new System.Drawing.Point(326, 194);
             this.txtterms.Name = "txtterms";
             this.txtterms.Size = new System.Drawing.Size(125, 20);
@@ -214,7 +214,7 @@
             // txtpostCode
             // 
             this.txtpostCode.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtpostCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpostCode.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtpostCode.Location = new System.Drawing.Point(174, 194);
             this.txtpostCode.Name = "txtpostCode";
             this.txtpostCode.Size = new System.Drawing.Size(125, 20);
@@ -233,7 +233,7 @@
             // txtcontact
             // 
             this.txtcontact.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtcontact.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcontact.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcontact.Location = new System.Drawing.Point(541, 54);
             this.txtcontact.Name = "txtcontact";
             this.txtcontact.Size = new System.Drawing.Size(193, 20);
@@ -252,7 +252,7 @@
             // txtbusiness
             // 
             this.txtbusiness.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtbusiness.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbusiness.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusiness.Location = new System.Drawing.Point(393, 98);
             this.txtbusiness.Multiline = true;
             this.txtbusiness.Name = "txtbusiness";
@@ -272,7 +272,7 @@
             // txttin
             // 
             this.txttin.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txttin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttin.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttin.Location = new System.Drawing.Point(29, 194);
             this.txttin.Name = "txttin";
             this.txttin.Size = new System.Drawing.Size(125, 20);
@@ -291,7 +291,7 @@
             // txtcustName
             // 
             this.txtcustName.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtcustName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcustName.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcustName.Location = new System.Drawing.Point(175, 54);
             this.txtcustName.Name = "txtcustName";
             this.txtcustName.Size = new System.Drawing.Size(355, 20);
@@ -310,7 +310,7 @@
             // txtaddress
             // 
             this.txtaddress.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtaddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtaddress.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtaddress.Location = new System.Drawing.Point(30, 98);
             this.txtaddress.Multiline = true;
             this.txtaddress.Name = "txtaddress";
@@ -330,7 +330,7 @@
             // txtcustCode
             // 
             this.txtcustCode.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtcustCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcustCode.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcustCode.Location = new System.Drawing.Point(32, 54);
             this.txtcustCode.Name = "txtcustCode";
             this.txtcustCode.Size = new System.Drawing.Size(122, 20);

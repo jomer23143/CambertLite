@@ -74,5 +74,13 @@ namespace Cambert.Reports.Extracopy
             viewer.btnDeclare.Visible = false;
             viewer.ShowDialog();
         }
+
+        private void ExtraDRCopy_Load(object sender, EventArgs e)
+        {
+            var dt = DataSupport.RunDataSet("Select drNo from Global_drTrans order by dr_Id DESC").Tables[0];
+            txtdr.DataSource = dt;
+            txtdr.DisplayMember = "drNo";
+            txtdr.ValueMember = "drNo";
+        }
     }
 }
